@@ -1,11 +1,9 @@
 #!/usr/bin/php
 <?php
 
-echo('graph_title nginx phpfpm status'."\n");
 echo('graph_order down up'."\n");
 echo('graph_vlabel conn/processes'."\n");
 echo('graph_scale no'."\n");
-echo('graph_info NGINX & php-fpm status'."\n");
 echo('graph_category nginx'."\n");
 echo('graph_period minute'."\n");
 
@@ -29,6 +27,7 @@ $i=0;
 foreach($phpfpm as $label) {
   $status = chop(`wget 127.0.0.1/phpfpm_status -O - -q | egrep -e "^$label:" | cut -f2 -d: |awk '{print $1}'`);
   $replacement_label = preg_replace("#\s#", '_', $label);
+  echo('graph_title '.$label."\n");
   echo("$replacement_label.label ".$replacement_label."\n");
   echo("$replacement_label.value ".$status."\n");
 }
