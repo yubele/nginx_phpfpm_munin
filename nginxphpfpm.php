@@ -28,8 +28,9 @@ $phpfpm[8] = "slow requests";
 $i=0;
 foreach($phpfpm as $label) {
   $status = chop(`wget 127.0.0.1/phpfpm_status -O - -q | egrep -e "^$label:" | cut -f2 -d: |awk '{print $1}'`);
-  echo("graph.label ".$label."\n");
-  echo("graph.value ".$status."\n");
+  $replacement_label = preg_replace("#\s#", '_', $label);
+  echo("$replacement_label.label ".$replacement_label."\n");
+  echo("$replacement_label.value ".$status."\n");
 }
 
 #wget 127.0.0.1/phpfpm_status -O - -q | grep "max children reached" | cut -f2 -d: |awk '{print $1}'
