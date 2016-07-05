@@ -2,12 +2,10 @@
 <?php
 
 echo('graph_title nginx phpfpm status'."\n");
-echo('graph_order down up'."\n");
 echo('graph_vlabel conn/processes'."\n");
 echo('graph_scale no'."\n");
 echo('graph_info NGINX & php-fpm status'."\n");
 echo('graph_category nginx'."\n");
-echo('graph_period minute'."\n");
 
 $phpfpm[0] = "accepted conn";
 $phpfpm[1] = "max listen queue";
@@ -33,6 +31,7 @@ foreach($phpfpm as $label) {
   echo("$replacement_label.value ".$status."\n");
   echo($replacement_label.'.type DERIVE'."\n");
   echo($replacement_label.'.info '.$label."\n");
+  echo($replacement_label.'.min 0'."\n");
 }
 
 #wget 127.0.0.1/phpfpm_status -O - -q | grep "max children reached" | cut -f2 -d: |awk '{print $1}'
