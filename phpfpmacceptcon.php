@@ -16,7 +16,7 @@ foreach($phpfpm as $label) {
   $replacement_label = preg_replace("#\s#", '_', $label);
   echo("$replacement_label.label ".$replacement_label."\n");
   echo("$replacement_label.value ".$status."\n");
-  echo($replacement_label.'.type DERIVE'."\n");
+  echo($replacement_label.'.type Gauge'."\n");
   echo($replacement_label.'.info '.$label."\n");
   echo($replacement_label.'.min 0'."\n");
 }
