@@ -7,21 +7,14 @@ echo('graph_scale no'."\n");
 echo('graph_info NGINX & php-fpm status'."\n");
 echo('graph_category nginx'."\n");
 
-$phpfpm[0] = "accepted conn";
-$phpfpm[1] = "max listen queue";
-$phpfpm[2] = "listen queue len";
-$phpfpm[3] = "idle processes";
-$phpfpm[4] = "active processes";
-$phpfpm[5] = "total processes";
-$phpfpm[6] = "max active processes";
-$phpfpm[7] = "max children reached";
-$phpfpm[8] = "slow requests";
-
-#nginx[0]="Active connections"
-#up.label bps
-#up.type DERIVE
-#up.negative down
-#up.cdef up,8,*
+$phpfpm = ["max listen queue",
+	"listen queue len",
+	"idle processes",
+	"active processes",
+	"total processes",
+	"max active processes",
+	"max children reached",
+	"slow requests"];
 
 $i=0;
 foreach($phpfpm as $label) {
@@ -33,5 +26,3 @@ foreach($phpfpm as $label) {
   echo($replacement_label.'.info '.$label."\n");
   echo($replacement_label.'.min 0'."\n");
 }
-
-#wget 127.0.0.1/phpfpm_status -O - -q | grep "max children reached" | cut -f2 -d: |awk '{print $1}'

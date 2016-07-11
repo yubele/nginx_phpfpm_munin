@@ -11,7 +11,7 @@ Installasion
 
 Sample
 -----------
-$ cat /etc/nginx/site-enabled/sample.com
+`$ cat /etc/nginx/site-enabled/sample.com
 http {
   ....
 
@@ -39,4 +39,4 @@ http {
 $ cat ***/www.conf
 ...
 
-pm.status_path = /phpfpm_status
+pm.status_path = /phpfpm_status`
