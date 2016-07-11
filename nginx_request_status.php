@@ -13,7 +13,7 @@ $status = chop(`wget 127.0.0.1/nginx_status -O - -q | egrep -e "$label" -A1 | ta
 echo_label($label, $info, $status);
 
 $label = 'handled';
-$info = 'The total number of accepted client connections.';
+$info = 'The total number of handled connections. Generally, the parameter value is the same as accepts unless some resource limits have been reached (for example, the worker_connections limit).';
 $status = chop(`wget 127.0.0.1/nginx_status -O - -q | egrep -e "$label" -A1 | tail -n 1 |awk '{print $2}' `);
 echo_label($label, $info, $status);
 
