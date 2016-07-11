@@ -15,7 +15,7 @@ echo_label($label, $info, $status);
 function echo_label($label, $info, $status) {
   echo($label.".label ".$label."\n");
   echo($label.".value ".$status."\n");
-  echo($label.'.type Gauge'."\n");
+  echo($label.'.type GAUGE'."\n");
   echo($label.'.info '.$label."\n");
   echo($label.'.min 0'."\n");
 }
