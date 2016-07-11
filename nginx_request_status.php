@@ -23,9 +23,10 @@ $status = chop(`wget 127.0.0.1/nginx_status -O - -q | egrep -e "$label" -A1 | ta
 echo_label($label, $info, $status);
 
 function echo_label($label, $info, $status) {
-  echo($label.".label ".$label."\n");
-  echo($label.".value ".$status."\n");
-  echo($label.'.type GAUGE'."\n");
-  echo($label.'.info '.$label."\n");
-  echo($label.'.min 0'."\n");
+  $replacement_label = str_replace(' ', '_', $label);
+  echo($replacement_label.".label ".$label."\n");
+  echo($replacement_label.".value ".$status."\n");
+  echo($replacement_label.'.type GAUGE'."\n");
+  echo($replacement_label.'.info '.$label."\n");
+  echo($replacement_label.'.min 0'."\n");
 }
