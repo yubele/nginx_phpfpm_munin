@@ -7,7 +7,8 @@ Installasion
 1. Set up the status page of `nginx (stub_status), phpfpm (pm.status)`.
  https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
  http://php.net/manual/en/install.fpm.configuration.php
-2. Install to /etc/munin-node/plugins
+2. Install to /etc/munin-node/plugins on munin-node
+ ` $ sudo cp *.php /etc/munin/plugins/ && $ sudo /etc/init.d/munin-node restart`
 
 Sample
 -----------
